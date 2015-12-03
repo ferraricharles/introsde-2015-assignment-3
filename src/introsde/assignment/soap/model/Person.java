@@ -25,7 +25,6 @@ import javax.xml.bind.annotation.XmlElementRef;
 @Entity  // indicates that this class is an entity to persist in DB
 @Table(name="Person") // to whole table must be persisted 
 @NamedQuery(name="Person.findAll", query="SELECT p FROM Person p")
-@XmlRootElement
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id // defines this attributed as the one that identifies the entity

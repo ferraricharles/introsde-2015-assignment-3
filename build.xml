@@ -159,4 +159,7 @@
                 <classes dir="${build.dir}" />
             </war>
         </target>
+
+        <target name="go" depends="clean, install, start">
+        </target>
     </project>
