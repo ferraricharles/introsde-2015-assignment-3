@@ -109,6 +109,7 @@ public class LifeStatus implements Serializable {
 	// we make this transient for JAXB to avoid and infinite loop on serialization
 	@XmlTransient
 	public Person getPerson() {
+		
 		return person;
 	}
 

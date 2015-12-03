@@ -34,6 +34,7 @@ public class PeopleImpl implements People {
     public int addPerson(Person person) {
     	
         Person.savePerson(person);
+        
         return person.getIdPerson();
     }
 
@@ -75,11 +76,66 @@ public class PeopleImpl implements People {
 			MeasureDefinition md = MeasureDefinition.getMeasureDefinitionByTitle(measure);
 			return Person.getLifeStatusHistory(id,md.getIdMeasureDef());
 		}catch(Exception e){
-			System.out.println(e);
+			//System.out.println(e);
 			return null;
 		}
 		
 		
 	}
 
+	@Override
+	public List<MeasureDefinition> readMeasureTypes() {
+		
+		return MeasureDefinition.getAll();
+	}
+
+	@Override
+	public LifeStatus readPersonMeasure(int id, String measure, int mid) {
+		LifeStatus ls = LifeStatus.getLifeStatusById(mid);
+		System.out.println("ID "+ls.getPerson().getIdPerson()+"| "+id);
+		System.out.println("MEASURE "+ls.getMeasureDefinition().getMeasureType()+"| "+measure);
+		if(ls.getPerson().getIdPerson() == id && ls.getMeasureDefinition().getMeasureType() == measure){
+			
+			return ls;
+		}
+		return null;
+	}
+
+	@Override
+	public LifeStatus readLifeStatus(int id) {
+		return LifeStatus.getLifeStatusById(id);
+		
+	}
+
+	@Override
+	public Person readPersonFromLifeStatus(int id) {
+		return LifeStatus.getLifeStatusById(id).getPerson();
+		
+	}
+
+	@Override
+	public LifeStatus savePersonMeasure(int id, LifeStatus measure) {
+		// TODO Auto-generated method stub
+		Person p = Person.getPersonById(id);
+		measure.setPerson(p);
+		return LifeStatus.saveLifeStatus(measure);
+	}
+
+	@Override
+	public LifeStatus updatePersonMeasure(int id, LifeStatus measure) {
+		Person p = Person.getPersonById(id);
+		measure.setPerson(p);
+		return LifeStatus.updateLifeStatus(measure);
+	}
+
+	@Override
+	public MeasureDefinition getSingleMeasureType(int id) {
+		return MeasureDefinition.getMeasureDefinitionById(id);
+		
+	}
+
+	
+
+
+	
 }

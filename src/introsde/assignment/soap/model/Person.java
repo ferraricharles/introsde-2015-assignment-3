@@ -86,18 +86,7 @@ public class Person implements Serializable {
 
     @XmlElementWrapper(name = "healthProfile")
     public List<LifeStatus> getLifeStatus() {
-        return getRecentLifeStatus(this.getIdPerson());
-
-        /*
-            if(!recentLifeStatus){
-                setRecentLifeStatus(false);
-                
-
-            }
-                
-
-            return lifeStatus;
-            */
+        return this.lifeStatus;
 
     }
 
@@ -105,7 +94,7 @@ public class Person implements Serializable {
 
 
     public void setLifeStatus (List<LifeStatus> lifeStatus){
-        System.out.println("\n\n\n\n\n\n\n LIFE STATUS SETTED");
+        //System.out.println("\n\n\n\n\n\n\n LIFE STATUS SETTED");
         this.lifeStatus = lifeStatus;
     }
 
@@ -129,6 +118,10 @@ public class Person implements Serializable {
     }
     public void setEmail(String email){
         this.email = email;
+    }
+    
+    public List<LifeStatus> getLifeStatusHistory(){
+    	return this.lifeStatus;
     }
 
     /* CHARLES LINDO*/
