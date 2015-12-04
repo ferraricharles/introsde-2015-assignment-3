@@ -55,13 +55,13 @@ public class PeopleClient{
         p2.setName("Bigode");
         p2.setLifeStatus(lsList);
         
-        int idPerson = people.addPerson(p2);
+        long idPerson = people.addPerson(p2);
         
         p = people.readPerson(idPerson);
         System.out.println("Method #4 Person added ==> "+idPerson+p.getName());
         
         
-        int i = people.deletePerson(p.getIdPerson());
+        long i = people.deletePerson(p.getIdPerson());
         if (i==0){
         	System.out.println("Method #5 Person deleted, old ID = "+idPerson );
         }

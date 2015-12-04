@@ -14,7 +14,7 @@ import introsde.assignment.soap.model.Person;
 public class PeopleImpl implements People {
 
     @Override
-    public Person readPerson(int id) {
+    public Person readPerson(long id) {
         System.out.println("---> Reading Person by id = "+id);
         Person p = Person.getPersonById(id);
         if (p!=null) {
@@ -31,7 +31,7 @@ public class PeopleImpl implements People {
     }
 
     @Override
-    public int addPerson(Person person) {
+    public long addPerson(Person person) {
     	
         Person.savePerson(person);
         
@@ -39,7 +39,7 @@ public class PeopleImpl implements People {
     }
 
     @Override
-    public int updatePerson(Person person) {
+    public long updatePerson(Person person) {
     	
     
         Person.updatePerson(person);
@@ -48,7 +48,7 @@ public class PeopleImpl implements People {
     }
 
     @Override
-    public int deletePerson(int id) {
+    public long deletePerson(long id) {
         Person p = Person.getPersonById(id);
         if (p!=null) {
             Person.removePerson(p);
@@ -59,7 +59,7 @@ public class PeopleImpl implements People {
     }
 
     @Override
-    public int updatePersonHP(int id, LifeStatus hp) {
+    public int updatePersonHP(long id, LifeStatus hp) {
         LifeStatus ls = LifeStatus.getLifeStatusById(hp.getIdMeasure());
         if (ls.getPerson().getIdPerson() == id) {
             LifeStatus.updateLifeStatus(hp);
@@ -70,7 +70,7 @@ public class PeopleImpl implements People {
     }
 
 	@Override
-	public List<LifeStatus> getLifeStatus(int id, String measure) {
+	public List<LifeStatus> getLifeStatus(long id, String measure) {
 		try{
 			Person p =  Person.getPersonById(id);
 			MeasureDefinition md = MeasureDefinition.getMeasureDefinitionByTitle(measure);
@@ -90,7 +90,7 @@ public class PeopleImpl implements People {
 	}
 
 	@Override
-	public LifeStatus readPersonMeasure(int id, String measure, int mid) {
+	public LifeStatus readPersonMeasure(long id, String measure, int mid) {
 		LifeStatus ls = LifeStatus.getLifeStatusById(mid);
 		System.out.println("ID "+ls.getPerson().getIdPerson()+"| "+id);
 		System.out.println("MEASURE "+ls.getMeasureDefinition().getMeasureType()+"| "+measure);
@@ -114,7 +114,7 @@ public class PeopleImpl implements People {
 	}
 
 	@Override
-	public LifeStatus savePersonMeasure(int id, LifeStatus measure) {
+	public LifeStatus savePersonMeasure(long id, LifeStatus measure) {
 		// TODO Auto-generated method stub
 		Person p = Person.getPersonById(id);
 		measure.setPerson(p);
@@ -122,7 +122,7 @@ public class PeopleImpl implements People {
 	}
 
 	@Override
-	public LifeStatus updatePersonMeasure(int id, LifeStatus measure) {
+	public LifeStatus updatePersonMeasure(long id, LifeStatus measure) {
 		Person p = Person.getPersonById(id);
 		measure.setPerson(p);
 		return LifeStatus.updateLifeStatus(measure);
@@ -131,6 +131,19 @@ public class PeopleImpl implements People {
 	@Override
 	public MeasureDefinition getSingleMeasureType(int id) {
 		return MeasureDefinition.getMeasureDefinitionById(id);
+		
+	}
+
+	@Override
+	public long deletePersonById(long id) {
+		try{
+			Person p = Person.getPersonById(id);
+			Person.removePerson(p);
+			return 1;
+		}catch(Exception e){
+			return 0;
+		}
+		
 		
 	}
 

@@ -33,7 +33,7 @@ public class Person implements Serializable {
         pkColumnName="name", valueColumnName="seq",
         pkColumnValue="Person")
     @Column(name="idPerson")
-    private int idPerson;
+    private Long idPerson;
     @Column(name="lastname")
     private String lastname;
 
@@ -58,7 +58,7 @@ public class Person implements Serializable {
    
 
     // getters
-    public int getIdPerson(){
+    public long getIdPerson(){
         return idPerson;
     }
 
@@ -100,7 +100,7 @@ public class Person implements Serializable {
 
     
     // setters
-    public void setIdPerson(int idPerson){
+    public void setIdPerson(long idPerson){
         this.idPerson = idPerson;
     }
     public void setLastname(String lastname){
@@ -124,7 +124,7 @@ public class Person implements Serializable {
     }
 
     /* CHARLES LINDO*/
-    public static List<LifeStatus> getLifeStatusHistory(int personid) {
+    public static List<LifeStatus> getLifeStatusHistory(long personid) {
         EntityManager em = LifeCoachDao.instance.createEntityManager();
         System.out.println("Looking measurements for"+personid);
         List<LifeStatus> list = new ArrayList<LifeStatus>();
@@ -145,7 +145,7 @@ public class Person implements Serializable {
         
     }
 
-    public static List<LifeStatus> getRecentLifeStatus(int personid) {
+    public static List<LifeStatus> getRecentLifeStatus(long personid) {
         EntityManager em = LifeCoachDao.instance.createEntityManager();
         //System.out.println("Looking measurements for"+personid);
         List<LifeStatus> list = new ArrayList<LifeStatus>();
@@ -191,7 +191,7 @@ public class Person implements Serializable {
         
     }
 
-    public static List<LifeStatus> getLifeStatusHistory(int personid, int measureid) {
+    public static List<LifeStatus> getLifeStatusHistory(long personid, int measureid) {
         EntityManager em = LifeCoachDao.instance.createEntityManager();
         //System.out.println("\n\n\n\n\n\nLooking measurement "+measureid+" for "+personid);
         List<LifeStatus> list = new ArrayList<LifeStatus>();
@@ -221,7 +221,7 @@ public class Person implements Serializable {
         
     }
     
-    public static Person getPersonById(int personId) {
+    public static Person getPersonById(long personId) {
         EntityManager em = LifeCoachDao.instance.createEntityManager();
         Person p = em.find(Person.class, personId);
         LifeCoachDao.instance.closeConnections(em);

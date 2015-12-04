@@ -18,7 +18,7 @@ import introsde.assignment.soap.model.Person;
 public interface People {
     @WebMethod(operationName="readPerson")
     @WebResult(name="person") 
-    public Person readPerson(@WebParam(name="personId") int id);
+    public Person readPerson(@WebParam(name="personId") long id);
 
     @WebMethod(operationName="getPersonList")
     @WebResult(name="people") 
@@ -26,23 +26,27 @@ public interface People {
 
     @WebMethod(operationName="createPerson")
     @WebResult(name="personId") 
-    public int addPerson(@WebParam(name="person") Person person);
+    public long addPerson(@WebParam(name="person") Person person);
 
     @WebMethod(operationName="updatePerson")
     @WebResult(name="personId") 
-    public int updatePerson(@WebParam(name="person") Person person);
+    public long updatePerson(@WebParam(name="person") Person person);
 
     @WebMethod(operationName="deletePerson")
     @WebResult(name="personId") 
-    public int deletePerson(@WebParam(name="personId") int id);
+    public long deletePerson(@WebParam(name="personId") long id);
+    
+    @WebMethod(operationName="deletePersonById")
+    @WebResult(name="personId") 
+    public long deletePersonById(@WebParam(name="person") long id);
 
     @WebMethod(operationName="updatePersonHealthProfile")
     @WebResult(name="hpId") 
-    public int updatePersonHP(@WebParam(name="personId") int id, @WebParam(name="healthProfile") LifeStatus hp);
+    public int updatePersonHP(@WebParam(name="personId") long id, @WebParam(name="healthProfile") LifeStatus hp);
     
     @WebMethod(operationName="getMeasureType")
     @WebResult(name="measureType") 
-    public List<LifeStatus> getLifeStatus(@WebParam(name="personId") int id, @WebParam(name="measure") String measure);
+    public List<LifeStatus> getLifeStatus(@WebParam(name="personId") long id, @WebParam(name="measure") String measure);
     
     @WebMethod(operationName="getSingleMeasureType")
     @WebResult(name="measureType") 
@@ -62,15 +66,15 @@ public interface People {
     
     @WebMethod(operationName="readPersonMeasure")
     @WebResult(name="measureTypes") 
-    public LifeStatus readPersonMeasure(@WebParam(name="personId") int id, @WebParam(name="measure") String measure,@WebParam(name="measureId") int mid);
+    public LifeStatus readPersonMeasure(@WebParam(name="personId") long id, @WebParam(name="measure") String measure,@WebParam(name="measureId") int mid);
     
     @WebMethod(operationName="savePersonMeasure")
     @WebResult(name="measureTypes") 
-    public LifeStatus savePersonMeasure(@WebParam(name="personId") int id, @WebParam(name="measure") LifeStatus measure);
+    public LifeStatus savePersonMeasure(@WebParam(name="personId") long id, @WebParam(name="measure") LifeStatus measure);
     
     @WebMethod(operationName="updatePersonMeasure")
     @WebResult(name="measureTypes") 
-    public LifeStatus updatePersonMeasure(@WebParam(name="personId") int id, @WebParam(name="measure") LifeStatus measure);
+    public LifeStatus updatePersonMeasure(@WebParam(name="personId") long id, @WebParam(name="measure") LifeStatus measure);
     
     
 }
