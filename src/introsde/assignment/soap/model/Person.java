@@ -83,7 +83,7 @@ public class Person implements Serializable {
 
 
 
-    @XmlElementWrapper(name = "healthProfile")
+    
     public List<LifeStatus> getLifeStatus() {
         return this.lifeStatus;
 

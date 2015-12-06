@@ -20,7 +20,7 @@ public interface People {
     @WebResult(name="person") 
     public Person readPerson(@WebParam(name="personId") long id);
 
-    @WebMethod(operationName="getPersonList")
+    @WebMethod(operationName="readPersonList")
     @WebResult(name="people") 
     public List<Person> getPeople();
 
